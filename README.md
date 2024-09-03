@@ -28,15 +28,7 @@ The [psycopg2](https://www.psycopg.org) adaptor is used. Note the [installation 
     
 ## Local Development
 
-### Running locally
 
-- Run `docker compose up` command from root directory to start the entire stack. The following will be started: 
-  - Postgres server 
-  - Flyway - it setups the postgres tables and inserts some dev data.
-  - sample-api server
-- Environment variables are defined in the docker-compose.yml
-- The `sample-api` folder is volume mounted, so any changes to the code will be reflected in the container 
-- The API's documentation is available at [http://localhost:3003/docs](http://localhost:3003/docs).
 
 
 ### Unit tests
@@ -52,3 +44,66 @@ This is a simple API. It is not production ready.
 The API is based on the table schema defined in [V1.0.0__init.sql](db/migrations/V1.0.0__init.sql) file. Note the foreign key constraint if you want to try the endpoints out.
 
 The [http://localhost:3003/docs](http://localhost:3003/docs) page lists the available endpoints.
+
+
+### Assigment Question 1 
+
+Added DockerFile for sample API application under sample-api root directory.
+
+### Running locally
+
+- Install Docker in your local machine.
+- Clone the git repo and go to the sample-api directory.
+
+- Run `docker compose up` command from root directory to start the entire stack. The following will be started: 
+  - Postgres server 
+  - Flyway - it setups the postgres tables and inserts some dev data.
+  - sample-api server
+- Environment variables are defined in the docker-compose.yml
+- The `sample-api` folder is volume mounted, so any changes to the code will be reflected in the container 
+- The API's documentation is available at [http://localhost:3003/docs](http://localhost:3003/docs).
+
+or we cam use other approach to build the image and run it locally:
+- `docker build -t sample-api .` to build the image.
+- `$ docker run -p 3003:3000 sample-api` to build the image.
+
+You can now access the API at http://localhost:3003
+
+### Asssigment Question 2 Solution
+
+Created workflow for sample API application under sample-api/.github/workflows/ci.yml to run the unit test and  published the image to  GitHub container registry (ghcr.io). 
+
+# Successful workflow link
+
+# Pulling the Image
+To pull the latest version of the image from GitHub Container Registry, use the following command:
+
+docker pull ghcr.io/<MY_GITHUB_USERNAME>/sample-api:latest
+Replace <MY_GITHUB_USERNAME> with my GitHub username shared via email(as it is sensitive information).
+
+# Running the Image
+To run the container, use the following command:
+
+docker run -p 3003:3000 ghcr.io/<YOUR_GITHUB_USERNAME>/sample-api:latest
+
+This command starts the container and maps port 3003 in the container to port 3000 on your host machine.
+
+You can now access the API at http://localhost:3003
+
+
+# Triggering GitHub Actions CI Workflow
+
+The CI workflow runs automatically
+1. Whenever we push the code to main branch, workflow gets triggered.
+2. When a pull request is raised or updated with main branch as the target, the workflow will be triggered.
+
+# To check the status workflow runs
+
+Open Actions tab on wotking github repository.
+We can see status of workflow runs, success/failure/in-progress.
+
+# Manual Triggering
+
+We can manually re-run a workflow from the Actions tab:
+Hit the "Re-run jobs" button to trigger the workflow manually.
+To re-run workflow you need to have write access on repository. 
