@@ -74,6 +74,7 @@ You can now access the API at http://localhost:3003
 Created workflow for sample API application under sample-api/.github/workflows/ci.yml to run the unit test and  published the image to  GitHub container registry (ghcr.io). 
 
 # Successful workflow link
+https://github.com/allachandra05/sample-api/actions/runs/10674780948
 
 # Pulling the Image
 To pull the latest version of the image from GitHub Container Registry, use the following command:
@@ -100,7 +101,7 @@ The CI workflow runs automatically
 # To check the status workflow runs
 
 Open Actions tab on wotking github repository.
-We can see status of workflow runs, success/failure/in-progress.
+We can see status of workflow runs, success/failure/In progress.
 
 # Manual Triggering
 
