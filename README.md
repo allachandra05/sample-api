@@ -73,8 +73,12 @@ You can now access the API at http://localhost:3003
 
 Created workflow for sample API application under sample-api/.github/workflows/ci.yml to run the unit test and  published the image to  GitHub container registry (ghcr.io). 
 
+# Built the image for the following architectures:
+- linux/amd64
+- linux/arm64
+
 # Successful workflow link
-https://github.com/allachandra05/sample-api/actions/runs/10674780948
+https://github.com/allachandra05/sample-api/actions/runs/10678333511
 
 # Pulling the Image
 To pull the latest version of the image from GitHub Container Registry, use the following command:
